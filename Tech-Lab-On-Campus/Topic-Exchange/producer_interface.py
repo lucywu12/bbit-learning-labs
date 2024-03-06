@@ -38,7 +38,13 @@ class mqProducerInterface:
         self.channel.basic_publish(
             exchange='topic_logs', routing_key=self.routing_key, body=message)
         # Send serialized message or String
-
+        self.channel.basic_publish(
+            exchange=self.exchange_name,
+            routing_key=self.routing_key,
+            body=message,
+        )
         # Print Confirmation
         print(f" [x] Sent {self.routing_key}:{message}")
         # Close channel and connection
+        self.channel.close()
+        self.connection.close()
