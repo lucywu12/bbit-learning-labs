@@ -25,7 +25,7 @@ def main(sector: str, queueName: str) -> None:
     #
 
     bindingKey = queueName + sector
-    consumer = mqConsumer(binding_key=bindingKey,exchange_name="Tech Lab Topic Exchange",queue_name=queueName)    
+    consumer = mqConsumer(binding_key=bindingKey,exchange_name="Tech Lab Topic Exchange New Test",queue_name=queueName)    
     consumer.startConsuming()
     
 
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     #
     #                       WRITE CODE HERE!!!
     #
-    sector = sys.argv[0] #sector
-    queue = sys.argv[1]
+    sector = sys.argv[1] #sector
+    queue = sys.argv[2]
 
     sys.exit(main(sector,queue))

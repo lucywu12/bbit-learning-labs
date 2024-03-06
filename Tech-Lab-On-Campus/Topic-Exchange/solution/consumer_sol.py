@@ -17,7 +17,7 @@ import json
 
 
 class mqConsumer:
-    def __init__(self, exchange_name: str) -> None:
+    def __init__(self, binding_key, exchange_name: str, queue_name="") -> None:
         # Save parameters to class variables
         self.exchangeName = exchange_name
         # Call setupRMQConnection
@@ -33,7 +33,9 @@ class mqConsumer:
         self.channel = connection.channel()
 
         # Create the exchange if not already present
-        self.exchange = self.channel.exchange_declare(exchange=self.exchangeName)
+        self.channel.exchange_declare(
+            exchange=self.exchangeName, exchange_type="topic"
+        )
 
         pass
 
